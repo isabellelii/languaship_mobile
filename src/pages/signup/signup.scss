@@ -1,9 +1,12 @@
 .swiper-slide {
-    text-align: center;
-    font-size: 13px;
-    align-items: stretch;
-    padding-top: none;
-    background-position: bottom;
-    background-size: 500px;
-    background-repeat: no-repeat;
+  text-align: center;
+  font-size: 12px;
+  align-items: stretch;
+  padding-top: none;
+  background-position: bottom;
+  background-size: 500px;
+  background-repeat: no-repeat;
+}
+.swiper-slide img {
+  max-width: 50%;
 }

@@ -15,16 +15,14 @@ export class SignupPage {
   @ViewChild(Nav) nav: Nav;
   @ViewChild(Slides) slides: Slides;
 
-  locations: any
-  languages: any
-  learnings: any
-  nativeLanguage: any
-  learnLanguage: any
+  locations: any;
+  languages: any;
+  learnings: any;
+  nativeLanguage: any;
+  learnLanguage: any;
   pages: Array<{title: string, component: any}>;
-  currentUser: any
-  age: any
-
-
+  currentUser: any;
+  age: any;
 
   constructor(
     private viewCtrl: ViewController,
@@ -73,7 +71,7 @@ export class SignupPage {
 
   showAlert() {
   let alert = this.alertCtrl.create({
-    title: 'Success',
+    title: 'Hooray!',
     subTitle: 'Successful action',
     buttons: ['Ok']
   });
@@ -170,7 +168,7 @@ export class SignupPage {
       .signIn(credentials)
       .subscribe(
         res => {
-          (this.currentUser = res.json().data),
+          this.currentUser = res.json().data,
           this.showAlert();
           this.event.publish('userSignedUp', this.currentUser);
           this.goToHome();

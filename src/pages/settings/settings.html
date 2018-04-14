@@ -13,10 +13,10 @@
 
   <ion-item>
     <ion-avatar item-start>
-      <img src="https://cdn.vox-cdn.com/thumbor/BonyZIgZli8GHGRlt9wNip1jssU=/0x100:607x505/1200x800/filters:focal(0x100:607x505)/cdn.vox-cdn.com/assets/3664725/Screen_Shot_2013-12-02_at_4.13.56_PM.png" style="height: 100px; width: 100px;">
-    </ion-avatar>
-    <h3>Darth vader</h3>
-    <p>Space, 45</p>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKr7iIltl0bBkIlbMXGD0P1A79o7u0_kMduzRzp_UQCal_oHxr">
+   </ion-avatar>
+    <h3>Gollum</h3>
+    <p>Middle-Earth, 99</p>
     <br />
     <ion-icon name="settings"></ion-icon>
   </ion-item>
@@ -54,6 +54,8 @@
       <ion-select [(ngModel)]="gender">
         <ion-option value="female">Female</ion-option>
         <ion-option value="male">Male</ion-option>
+        <ion-option value="male">Unicorn</ion-option>
+
       </ion-select>
     </ion-item>
   </ion-list>
@@ -71,4 +73,5 @@
         <ion-option value="other">Other</ion-option>
       </ion-select>
     </ion-item>
+    <button ion-button color="next" (click)="goToHome()" round>DONE!</button>
   </ion-list>

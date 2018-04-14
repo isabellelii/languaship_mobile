@@ -7,16 +7,11 @@
 <ion-content>
   <ion-slides pager="true">
     <ion-slide style="background-image: url('https://frontnews.eu/contents/news/19005/images/resize_w3L8iXyG47RlejaTfFmzBtZqhHpgWd0J_980x590.jpg')">
-        <h1>WELCOME TO LANGUASHIP</h1>
-      <h4>CREATE A NEW ACCOUNT</h4>
-      <p>
+      <h1>WELCOME TO LANGUASHIP!</h1>
+      <h5>CREATE A NEW ACCOUNT</h5>
         <button ion-button (click)="registerAccountPopUp()" *ngIf="!currentUser" color="next" round>SIGN UP</button>
-      </p>
-      <h5>ALREADY HAVE AN ACCOUNT?
-      LOG IN HERE</h5>
-      <p>
-        <button ion-button (click)="loginPopUp()" *ngIf="!currentUser" color="next" round>LOG IN</button>
-      </p>
+      <h6>ALREADY HAVE AN ACCOUNT?<br>LOG IN HERE</h6>
+      <button ion-button (click)="loginPopUp()" *ngIf="!currentUser" color="next" round>LOG IN</button>
     </ion-slide>
 
     <ion-slide style="background-image: url('https://frontnews.eu/contents/news/19005/images/resize_w3L8iXyG47RlejaTfFmzBtZqhHpgWd0J_980x590.jpg')">
@@ -27,12 +22,12 @@
         </ion-option>
       </ion-select>
       <p>
-        <button ion-button (click)="goToSlide(2)"color="next" round>NEXT</button>
+        <button ion-button (click)="goToSlide(2)" color="next" round>NEXT</button>
       </p>
     </ion-slide>
 
     <ion-slide style="background-image: url('https://frontnews.eu/contents/news/19005/images/resize_w3L8iXyG47RlejaTfFmzBtZqhHpgWd0J_980x590.jpg')">
-      <h4>WHAT IS YOUR NATIVE LANGUAGE?</h4>
+      <h5>WHAT IS YOUR NATIVE LANGUAGE?</h5>
       <ion-item>
         <ion-select [(ngModel)]='nativeLanguage'>
           <ion-option *ngFor="let ciao of languages" value="{{ ciao }}">
@@ -41,7 +36,7 @@
         </ion-select>
       </ion-item>
 
-      <h4>WHICH LANGUAGE DO YOU WANT TO LEARN?</h4>
+      <h5>WHICH LANGUAGE DO YOU WANT TO LEARN?</h5>
       <ion-item>
         <ion-select [(ngModel)]='learnLanguage'>
           <ion-option *ngFor="let cc of learnings" value="{{ cc }}">
@@ -55,7 +50,11 @@
     </ion-slide>
 
     <ion-slide style="background-image: url('https://frontnews.eu/contents/news/19005/images/resize_w3L8iXyG47RlejaTfFmzBtZqhHpgWd0J_980x590.jpg')">
-      <h4>WHAT'S YOUR AGE?</h4>
+      <h6>WHAT'S YOUR NAME?</h6>
+      <ion-item>
+        <ion-input type="name" placeholder="Name Input"></ion-input>
+      </ion-item>
+      <h6>WHAT'S YOUR AGE?</h6>
       <ion-label>
         <ion-badge *ngIf="this.age"> {{this.age}}</ion-badge>
       </ion-label>
@@ -63,17 +62,26 @@
         <ion-label range-left>18</ion-label>
         <ion-label range-right>99</ion-label>
       </ion-range>
-
-      <h4>AND GENDER?</h4>
+      <h6>AND GENDER?</h6>
       <ion-list>
         <ion-item>
           <ion-select [(ngModel)]="gender">
             <ion-option value="female">Female</ion-option>
             <ion-option value="male">Male</ion-option>
+            <ion-option value="unicorn">Unicorn</ion-option>
           </ion-select>
         </ion-item>
       </ion-list>
-      <button ion-button color="next" (click)="goToHome()" round>DONE!</button>
+      <button ion-button (click)="goToSlide(4)" color="next" round>NEXT</button>
     </ion-slide>
+
+    <ion-slide style="background-image: url('https://frontnews.eu/contents/news/19005/images/resize_w3L8iXyG47RlejaTfFmzBtZqhHpgWd0J_980x590.jpg')">
+      <h2>FANCY A PICTURE?</h2>
+          <img src="../assets/imgs/upload.png"/>
+      <p>
+        <button ion-button color="next" (click)="goToHome()" round>DONE!</button>
+      </p>
+    </ion-slide>
+
   </ion-slides>
 </ion-content>

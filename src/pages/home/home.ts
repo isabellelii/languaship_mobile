@@ -11,25 +11,11 @@ export class HomePage {
 
   users: any;
 
+  constructor(public navCtrl: NavController, private usersProvider: UsersProvider) {}
 
-
-  // constructor(public navCtrl: NavController) {
-
-
-  constructor(public navCtrl: NavController, private usersProvider: UsersProvider) {
-
-    this.users = usersProvider.getAll();
-//     this.users = this.getUsers();
-//
-
+  ionViewDidLoad() {
+    this.usersProvider.getAll().subscribe(({data}) => (this.users = data))
+  }
 }
 
 
-//
-//   getUsers(): void{
-//     this.usersProvider.getAll()
-//     .subscribe(users =>{
-//     this.users = users
-//     })
-  }
-// }

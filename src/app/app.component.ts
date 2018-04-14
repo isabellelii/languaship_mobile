@@ -9,37 +9,35 @@ import { ChatPage } from '../pages/chat/chat';
 import { SettingsPage } from '../pages/settings/settings';
 import { Angular2TokenService } from 'angular2-token';
 import { AlertController } from 'ionic-angular';
-import { LoadingController } from "ionic-angular";
+import { LoadingController } from 'ionic-angular';
+
+import ENV from '../providers/config';
 
 @Component({
   templateUrl: 'app.html'
 })
-
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = SignupPage;
   currentUser: any;
   loader: any;
-  pages: Array<{title: string, component: any}>;
-
+  pages: Array<{ title: string; component: any }>;
 
   constructor(
-    public platform:
-    Platform, public statusBar:
-    StatusBar, public splashScreen:
-    SplashScreen,
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
     public loadingCtrl: LoadingController,
     private _tokenService: Angular2TokenService,
     private alertCtrl: AlertController,
     private event: Events
   ) {
-
     this._tokenService.init({
-      apiBase: 'https://languaship.herokuapp.com/api/v1'
-  });
+      apiBase: ENV.config('dev').apiBase
+    });
 
-    this.event.subscribe('userSignedUp', (user) => {
+    this.event.subscribe('userSignedUp', user => {
       this.currentUser = user;
     });
 
@@ -66,17 +64,15 @@ export class MyApp {
 
   presentLoading() {
     this.loader = this.loadingCtrl.create({
-      content: "Authenticating..."
+      content: 'Authenticating...'
     });
 
     this.loader.present();
   }
 
-
   loginPopUp() {
     console.log('popup');
     let confirm = this.alertCtrl.create({
-
       title: 'Login',
       inputs: [
         {
@@ -108,19 +104,17 @@ export class MyApp {
   }
 
   login(credentials) {
-    this._tokenService
-      .signIn(credentials)
-      .subscribe(
-        res => {
-          (this.currentUser = res.json().data);
-          let alert = this.alertCtrl.create({
-            title: 'Successful Login',
-            buttons: ['OK']
-          });
-          alert.present();
-        },
-        err => console.error('error')
-      );
+    this._tokenService.signIn(credentials).subscribe(
+      res => {
+        this.currentUser = res.json().data;
+        let alert = this.alertCtrl.create({
+          title: 'Successful Login',
+          buttons: ['OK']
+        });
+        alert.present();
+      },
+      err => console.error('error')
+    );
   }
 
   logout() {

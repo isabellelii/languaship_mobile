@@ -14,20 +14,26 @@
   </h1>
 
   <ion-card *ngFor="let user of users">
-    <img src="{{ user.attributes.profileImage }}"/>
-      <ion-card-content>
-        <ion-card-title>
+    <img *ngIf="user.attributes.image" src="{{ user.attributes.image }}"/>
+    <ion-card-content>
+      <ion-card-title>
+        <div *ngIf="user.attributes.name">
           {{ user.attributes.name }}
-          </ion-card-title>
-        <p>
-          {{ user.attributes.city }},
-          {{ user.attributes.age }}
-        </p>
-        <h3> Native: {{ user.attributes.languages[0].name }} </h3>
-        <h3> Want to learn: {{ user.attributes.languages[0].learn }} </h3>
-      </ion-card-content>
-      <p>
-        <button ion-button class="message" color="next" round>SEND MESSAGE</button>
-      </p>
+        </div>
+      </ion-card-title>
+      <div *ngIf="user.attributes.location">
+        {{ user.attributes.location.locale }},
+      </div>
+      <p *ngIf="user.attributes.age"> {{ user.attributes.age }} </p>
+      <div *ngIf="user.attributes.languages">
+        <div *ngFor="let language of user.attributes.languages">
+          <h3 *ngIf="language.native == true"> Native: {{ language.name }} </h3>
+          <h3 *ngIf="language.learn == true"> Want to learn: {{ language.name }} </h3>
+        </div>
+      </div>
+    </ion-card-content>
+    <p>
+      <button ion-button class="message" color="next" round>SEND MESSAGE</button>
+    </p>
   </ion-card>
 </ion-content>
